@@ -1,6 +1,6 @@
 ﻿import React from "react";
 
-export default function ListItem(props) {
+export default function OrderItem(props) {
   const { listItem, onDeleteListItem } = props;
   return (
     <div className="col-12 mb-3 border">

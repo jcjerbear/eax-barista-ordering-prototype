@@ -1,6 +1,6 @@
 ﻿import React, {Component} from 'react';
 
-export default class ListForm extends Component {
+export default class OrderForm extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
