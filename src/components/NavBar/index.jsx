@@ -12,20 +12,20 @@ export default function NavBar() {
       </div>
       <nav className="navbar navbar-expand-sm navbar-light border-bottom justify-content-between">
         <Link className="navbar-brand" to="/">
-          eax_barista_ordering_prototype
+          EAX Barista
         </Link>
         <div className="navbar-nav">
           <Link className="nav-item nav-link active" to="Blank">
-            Blank
+            Home
           </Link>
           <Link className="nav-item nav-link active" to="Grid">
-            Grid
+            Drinks
           </Link>
           <Link className="nav-item nav-link active" to="List">
-            List
+            Orders
           </Link>
           <Link className="nav-item nav-link active" to="Master_Detail">
-            Master_Detail
+            Details
           </Link>
         </div>
       </nav>

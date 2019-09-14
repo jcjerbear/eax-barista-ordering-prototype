@@ -19,7 +19,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company A",
+    title: "Blond Roast",
     status: "Closed",
     shipTo: "Francisco Pérez-Olaeta",
     orderTotal: 2490.0,
@@ -29,7 +29,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company B",
+    title: "Caffe Misto",
     status: "Closed",
     shipTo: "Soo Jung Lee",
     orderTotal: 1760.0,
@@ -39,7 +39,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company C",
+    title: "Clover Brewed Coffee",
     status: "Shipped",
     shipTo: "Run Liu",
     orderTotal: 665.0,
@@ -49,7 +49,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company D",
+    title: "Cold Brew with Cascara Cold Foam",
     status: "Shipped",
     shipTo: "Soo Jung Lee",
     orderTotal: 560.0,
@@ -59,7 +59,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company E",
+    title: "Cold Brew with Cold Foam",
     status: "New",
     shipTo: "John Rodman",
     orderTotal: 810.0,
@@ -69,7 +69,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company F",
+    title: "Cold Brew with Salted Cream Cold Foam",
     status: "New",
     shipTo: "Elizabeth Andersen",
     orderTotal: 196.5,
@@ -79,7 +79,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company G",
+    title: "Decaf Pike Place Roast",
     status: "Closed",
     shipTo: "Peter Krschne",
     orderTotal: 270.0,
@@ -89,7 +89,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company H",
+    title: "Featured Dark Roast",
     status: "Closed",
     shipTo: "Sven Mortensen",
     orderTotal: 736.0,
@@ -99,7 +99,7 @@ sampleData.textAssets = [
   {
     shortDescription: shortLoremIpsum,
     longDescription: longLoremIpsum,
-    title: "Company I",
+    title: "Iced Coffee",
     status: "Shipped",
     shipTo: "Anna Bedecs",
     orderTotal: 800.0,
