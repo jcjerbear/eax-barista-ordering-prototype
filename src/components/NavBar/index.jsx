@@ -15,10 +15,10 @@ export default function NavBar() {
           EAX Barista
         </Link>
         <div className="navbar-nav">
-          <Link className="nav-item nav-link active" to="Blank">
-            Home
+          <Link className="nav-item nav-link active" to="CoffeeShops">
+            Coffee Shops
           </Link>
-          <Link className="nav-item nav-link active" to="Grid">
+          {/* <Link className="nav-item nav-link active" to="Grid">
             Drinks
           </Link>
           <Link className="nav-item nav-link active" to="List">
@@ -26,7 +26,7 @@ export default function NavBar() {
           </Link>
           <Link className="nav-item nav-link active" to="Master_Detail">
             Details
-          </Link>
+          </Link> */}
         </div>
       </nav>
     </React.Fragment>
