@@ -7,26 +7,29 @@ export default function Footer() {
       <div className="container-fluid">
         <div className="row justify-content-around">
           <div className="col-8 col-md-5">
-            <h5 className={styles.title}>eax_barista_ordering_prototype</h5>
+            <h5 className={styles.title}>EAX Barista</h5>
             <p className={styles.description}>
-              This is placeholder text. Your web app description goes here.
+              A web app for you to submit your coffee orders before you arrive
             </p>
           </div>
           <div className="col-2">
             <ul className="list-unstyled">
               <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
+                <a className={styles.footerlink}
+                  href="https://www.origin.com/can/en-us/store">
+                  Facebook
                 </a>
               </li>
               <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
+                <a className={styles.footerlink}
+                  href="https://www.origin.com/can/en-us/store">
+                  Instagram
                 </a>
               </li>
               <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
+                <a className={styles.footerlink}
+                  href="https://www.origin.com/can/en-us/store">
+                  Youtube
                 </a>
               </li>
             </ul>

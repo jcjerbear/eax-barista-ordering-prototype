@@ -110,7 +110,7 @@ export default class List extends Component {
       <main id="mainContent" className="container">
         <div className="row">
           <div className="col mt-5 p-0">
-            <h3>Bootstrap List Template</h3>
+            <h3>Starbuck's Customer Order List</h3>
           </div>
           <div className="col-12 p-0">
             <ListForm

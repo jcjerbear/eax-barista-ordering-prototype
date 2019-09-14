@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import classnames from "classnames";
 import GridComponent from "./GridComponent";
+import EstimatedTimeForm from "./EstimatedTimeForm";
 import WarningMessage from "../WarningMessage";
 import GreyBox from "../../images/GreyBox.svg";
 import styles from "./grid.module.css";
@@ -52,19 +53,24 @@ export default class Grid extends Component {
     return (
       <main id="mainContent">
         <div className={classnames("text-center", styles.header)}>
-          <h1>eax-barista-ordering-prototype</h1>
-          <p>This is placeholder text. Your web app description goes here.</p>
+          <h1>Starbucks</h1>
+          <p>To inspire and nurture the human spirit – one person, one cup and one neighborhood at a time.</p>
           <a
-            href="https://github.com/Microsoft/WebTemplateStudio"
+            href="https://www.starbucks.com/"
             className="btn btn-primary my-2"
           >
-            Link to our Github
+            Link to starbucks.com
           </a>
         </div>
 
         <div className="container">
           <div className="row justify-content-center py-5">
-            <h1>Bootstrap Grid Template</h1>
+            <h1>What would you like to drink today?</h1>
+          </div>
+          <div className="row justify-content-center py-5">
+            <EstimatedTimeForm
+              onAddListItem={this.handleAddListItem}
+            />
           </div>
 
           <div className="row justify-content-around text-center pb-5">
