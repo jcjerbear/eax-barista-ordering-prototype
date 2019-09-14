@@ -8,6 +8,18 @@ const debug = require("debug")("WebTemplateStudioExpress:server");
 const http = require("http");
 const app = require("./app");
 const CONSTANTS = require("./constants");
+const sqlite3 = require("sqlite3").verbose();
+
+/**
+ * Start SQLite DB connections.
+ */
+
+let db = new sqlite3.Database(":memory:", err => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log("Connected to the in-memory SQlite database.");
+});
 
 /**
  * Get port from environment and store in Express.
@@ -85,3 +97,17 @@ function onListening() {
   const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
 }
+
+/**
+ * Close SQLite DB connections.
+ */
+
+process.on("SIGINT", () => {
+  db.close(err => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log("Close the database connection.");
+  });
+  server.close();
+});
