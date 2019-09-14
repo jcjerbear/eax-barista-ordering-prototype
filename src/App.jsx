@@ -16,7 +16,7 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Redirect exact path="/" to="/CoffeeShops" />
-          <Route path="/Blank" component={Blank} />
+          <Route path="/ThankYou" component={Blank} />
           <Route path="/CoffeeShops" component={Grid} />
           <Route path="/List" component={List} />
           <Route path="/Master_Detail" component={Master_Detail} />
