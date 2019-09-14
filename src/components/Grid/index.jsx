@@ -54,13 +54,16 @@ export default class Grid extends Component {
       <main id="mainContent">
         <div className={classnames("text-center", styles.header)}>
           <h1>Starbucks</h1>
-          <p>To inspire and nurture the human spirit – one person, one cup and one neighborhood at a time.</p>
-          <a
+          <p>
+            To inspire and nurture the human spirit – one person, one cup and
+            one neighborhood at a time.
+          </p>
+          {/* <a
             href="https://www.starbucks.com/"
             className="btn btn-primary my-2"
           >
             Link to starbucks.com
-          </a>
+          </a> */}
         </div>
 
         <div className="container">
@@ -68,9 +71,7 @@ export default class Grid extends Component {
             <h1>What would you like to drink today?</h1>
           </div>
           <div className="row justify-content-center py-5">
-            <EstimatedTimeForm
-              onAddListItem={this.handleAddListItem}
-            />
+            <EstimatedTimeForm onAddListItem={this.handleAddListItem} />
           </div>
 
           <div className="row justify-content-around text-center pb-5">

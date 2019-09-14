@@ -15,7 +15,7 @@ export default function NavBar() {
           EAX Barista
         </Link>
         <div className="navbar-nav">
-          <Link className="nav-item nav-link active" to="CoffeeShops">
+          <Link className="nav-item nav-link active" to="coffeeshops">
             Coffee Shops
           </Link>
           {/* <Link className="nav-item nav-link active" to="Grid">
