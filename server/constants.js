@@ -8,5 +8,6 @@ CONSTANTS.ENDPOINT.LIST = "/list";
 
 CONSTANTS.ENDPOINT.GRID = "/grid";
 
+CONSTANTS.ENDPOINT.HOME = "/home";
 
 module.exports = CONSTANTS;

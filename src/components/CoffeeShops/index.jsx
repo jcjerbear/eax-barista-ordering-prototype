@@ -1,17 +1,16 @@
 ﻿import React, { Component } from "react";
 import classnames from "classnames";
-import GridComponent from "./GridComponent";
-import EstimatedTimeForm from "./EstimatedTimeForm";
+import CoffeeShopsComponent from "./CoffeeShopsComponent";
 import WarningMessage from "../WarningMessage";
 import GreyBox from "../../images/GreyBox.svg";
-import styles from "./grid.module.css";
+import styles from "./coffeeshops.module.css";
 import CONSTANTS from "../../constants";
 
-export default class Grid extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gridTextAssets: [{ description: "", header: "", id: 0 }],
+      coffeeShopsTextAssets: [{ description: "", header: "", id: 0 }],
       WarningMessageOpen: false,
       WarningMessageText: ""
     };
@@ -28,7 +27,7 @@ export default class Grid extends Component {
         }
         return response.json();
       })
-      .then(result => this.setState({ gridTextAssets: result }))
+      .then(result => this.setState({ coffeeShopsTextAssets: result }))
       .catch(error =>
         this.setState({
           WarningMessageOpen: true,
@@ -46,36 +45,31 @@ export default class Grid extends Component {
 
   render() {
     const {
-      gridTextAssets,
+      coffeeShopsTextAssets,
       WarningMessageOpen,
       WarningMessageText
     } = this.state;
     return (
       <main id="mainContent">
         <div className={classnames("text-center", styles.header)}>
-          <h1>Starbucks</h1>
-          <p>To inspire and nurture the human spirit – one person, one cup and one neighborhood at a time.</p>
-          <a
+          <h1>Coffee Shops</h1>
+          {/* <p>Which coffee shop would you like to order from today?</p> */}
+          {/* <a
             href="https://www.starbucks.com/"
             className="btn btn-primary my-2"
           >
             Link to starbucks.com
-          </a>
+          </a> */}
         </div>
 
         <div className="container">
           <div className="row justify-content-center py-5">
-            <h1>What would you like to drink today?</h1>
-          </div>
-          <div className="row justify-content-center py-5">
-            <EstimatedTimeForm
-              onAddListItem={this.handleAddListItem}
-            />
+            <h1>Which coffee shop would you like to order from today?</h1>
           </div>
 
           <div className="row justify-content-around text-center pb-5">
-            {gridTextAssets.map(textAssets => (
-              <GridComponent
+            {coffeeShopsTextAssets.map(textAssets => (
+              <CoffeeShopsComponent
                 key={textAssets.id}
                 header={textAssets.title}
                 description={textAssets.shortDescription}
