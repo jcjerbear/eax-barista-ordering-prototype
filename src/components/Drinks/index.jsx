@@ -1,17 +1,17 @@
 ﻿import React, { Component } from "react";
 import classnames from "classnames";
-import GridComponent from "./GridComponent";
+import DrinksComponent from "./DrinksComponent";
 import EstimatedTimeForm from "./EstimatedTimeForm";
 import WarningMessage from "../WarningMessage";
 import GreyBox from "../../images/GreyBox.svg";
-import styles from "./grid.module.css";
+import styles from "./drinks.module.css";
 import CONSTANTS from "../../constants";
 
-export default class Grid extends Component {
+export default class Drinks extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gridTextAssets: [{ description: "", header: "", id: 0 }],
+      drinksTextAssets: [{ description: "", header: "", id: 0 }],
       WarningMessageOpen: false,
       WarningMessageText: ""
     };
@@ -28,7 +28,7 @@ export default class Grid extends Component {
         }
         return response.json();
       })
-      .then(result => this.setState({ gridTextAssets: result }))
+      .then(result => this.setState({ drinksTextAssets: result }))
       .catch(error =>
         this.setState({
           WarningMessageOpen: true,
@@ -46,7 +46,7 @@ export default class Grid extends Component {
 
   render() {
     const {
-      gridTextAssets,
+      drinksTextAssets,
       WarningMessageOpen,
       WarningMessageText
     } = this.state;
@@ -75,8 +75,8 @@ export default class Grid extends Component {
           </div>
 
           <div className="row justify-content-around text-center pb-5">
-            {gridTextAssets.map(textAssets => (
-              <GridComponent
+            {drinksTextAssets.map(textAssets => (
+              <DrinksComponent
                 key={textAssets.id}
                 header={textAssets.title}
                 description={textAssets.shortDescription}

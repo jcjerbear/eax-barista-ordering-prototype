@@ -1,8 +1,8 @@
 ﻿import React, { Component } from "react";
 import classnames from "classnames";
-import styles from "./blank.module.css";
+import styles from "./thankyou.module.css";
 
-export default class Blank extends Component {
+export default class ThankYou extends Component {
   render() {
     return (
       <main id="mainContent">

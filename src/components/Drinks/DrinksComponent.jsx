@@ -1,6 +1,6 @@
 ﻿import React from "react";
 
-export default function GridComponent(props) {
+export default function DrinksComponent(props) {
   const { image, header, description } = props;
   return (
     <div className="col-md-4 col-sm-12 p-5">

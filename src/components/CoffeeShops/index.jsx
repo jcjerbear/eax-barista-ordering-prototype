@@ -6,7 +6,7 @@ import GreyBox from "../../images/GreyBox.svg";
 import styles from "./coffeeshops.module.css";
 import CONSTANTS from "../../constants";
 
-export default class Home extends Component {
+export default class CoffeeShops extends Component {
   constructor(props) {
     super(props);
     this.state = {

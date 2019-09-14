@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
-import ListItem from "./ListItem";
-import ListForm from "./ListForm";
+import OrderItem from "./OrderItem";
+import OrderForm from "./OrderForm";
 import WarningMessage from "../WarningMessage";
 import CONSTANTS from "../../constants";
 
@@ -113,12 +113,12 @@ export default class List extends Component {
             <h3>Starbuck's Customer Order List</h3>
           </div>
           <div className="col-12 p-0">
-            <ListForm
+            <OrderForm
               onAddListItem={this.handleAddListItem}
             />
           </div>
           {list.map(listItem => (
-            <ListItem
+            <OrderItem
               key={listItem._id}
               listItem={listItem}
               onDeleteListItem={this.handleDeleteListItem}
