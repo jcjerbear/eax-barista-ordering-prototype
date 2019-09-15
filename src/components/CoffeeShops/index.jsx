@@ -20,7 +20,7 @@ export default class CoffeeShops extends Component {
 
   // Get the text sample data from the back end
   componentDidMount() {
-    fetch(CONSTANTS.ENDPOINT.GRID)
+    fetch(CONSTANTS.ENDPOINT.COFFEESHOPS)
       .then(response => {
         if (!response.ok) {
           throw Error(response.statusText);

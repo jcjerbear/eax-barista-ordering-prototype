@@ -42,5 +42,10 @@ router.get(CONSTANTS.ENDPOINT.GRID, (req, res) => {
   res.json(sampleData.textAssets);
 });
 
+// COFFEESHOPS Page Endpoint
+router.get(CONSTANTS.ENDPOINT.COFFEESHOPS, (req, res) => {
+  res.json(sampleData.textAssets);
+});
+
 
 module.exports = router;
