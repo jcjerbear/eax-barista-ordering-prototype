@@ -53,7 +53,7 @@ export default class Drinks extends Component {
     return (
       <main id="mainContent">
         <div className={classnames("text-center", styles.header)}>
-          <h1>Starbucks</h1>
+          <h1>Drinks</h1>
           <p>
             To inspire and nurture the human spirit – one person, one cup and
             one neighborhood at a time.

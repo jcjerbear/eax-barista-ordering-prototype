@@ -18,7 +18,7 @@ class App extends Component {
         <Switch>
           <Redirect exact path="/" to="/coffeeshops" />
           <Route path="/thankyou" component={ThankYou} />
-          <Route path="/coffeeshops/:coffeeshop/drinks" component={Drinks} />
+          <Route path="/coffeeshops/:coffeeshop" component={Drinks} />
           <Route path="/coffeeshops" component={CoffeeShops} />
           <Route path="/order" component={Order} />
           <Route path="/masterdetail" component={Master_Detail} />

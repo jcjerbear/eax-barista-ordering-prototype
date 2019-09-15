@@ -10,7 +10,7 @@ export default class CoffeeShops extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      coffeeShopsTextAssets: [{ description: "", header: "", id: 0 }],
+      coffeeShopsTextAssets: [{ id: 0, coffeeshop_name: "" }],
       WarningMessageOpen: false,
       WarningMessageText: ""
     };
@@ -70,9 +70,9 @@ export default class CoffeeShops extends Component {
           <div className="row justify-content-around text-center pb-5">
             {coffeeShopsTextAssets.map(textAssets => (
               <CoffeeShopsComponent
-                key={textAssets.id}
-                header={textAssets.title}
-                description={textAssets.shortDescription}
+                id={textAssets.id}
+                coffeeshop_name={textAssets.coffeeshop_name}
+                // description={textAssets.shortDescription}
                 image={GreyBox}
               />
             ))}

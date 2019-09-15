@@ -6,7 +6,6 @@
 
 const debug = require("debug")("WebTemplateStudioExpress:server");
 const http = require("http");
-const app = require("./app");
 const CONSTANTS = require("./constants");
 const sqlite3 = require("sqlite3").verbose();
 
@@ -14,12 +13,18 @@ const sqlite3 = require("sqlite3").verbose();
  * Start SQLite DB connections.
  */
 
-let db = new sqlite3.Database(":memory:", err => {
+let db = new sqlite3.Database("./barista.db", err => {
   if (err) {
     return console.error(err.message);
   }
-  console.log("Connected to the in-memory SQlite database.");
+  console.log("Connected to barista SQlite database.");
 });
+
+/**
+ * Pass created db instance into app.
+ */
+
+const app = require("./app")(db);
 
 /**
  * Get port from environment and store in Express.
