@@ -11,11 +11,11 @@ export default function NavBar() {
         <a href="#mainContent">Skip to Main Content</a>
       </div>
       <nav className="navbar navbar-expand-sm navbar-light border-bottom justify-content-between">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/coffeeshops">
           EAX Barista
         </Link>
         <div className="navbar-nav">
-          <Link className="nav-item nav-link active" to="coffeeshops">
+          <Link className="nav-item nav-link active" to="/coffeeshops">
             Coffee Shops
           </Link>
           {/* <Link className="nav-item nav-link active" to="Grid">
