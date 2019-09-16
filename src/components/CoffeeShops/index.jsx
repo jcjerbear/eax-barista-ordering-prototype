@@ -132,7 +132,10 @@ export default class CoffeeShops extends Component {
 
                       <Dropdown.Menu>
                         {coffeeShopsTextAssets.map(textAsset => (
-                          <Dropdown.Item key={textAsset.id} href="/order">
+                          <Dropdown.Item
+                            key={textAsset.id}
+                            href={`/${textAsset.id}/order`}
+                          >
                             {textAsset.coffeeshop_name}
                           </Dropdown.Item>
                         ))}
@@ -171,14 +174,18 @@ export default class CoffeeShops extends Component {
           </div>
 
           <div className="row justify-content-around text-center pb-5">
-            {coffeeShopsTextAssets.map(textAssets => (
-              <CoffeeShopsComponent
-                key={textAssets.id}
-                coffeeshop_name={textAssets.coffeeshop_name}
-                // description={textAssets.shortDescription}
-                image={GreyBox}
-              />
-            ))}
+            {coffeeShopsTextAssets.map(textAssets => {
+              console.log(textAssets);
+              return (
+                <CoffeeShopsComponent
+                  key={textAssets.id}
+                  id={textAssets.id}
+                  coffeeshop_name={textAssets.coffeeshop_name}
+                  // description={textAssets.shortDescription}
+                  image={GreyBox}
+                />
+              );
+            })}
           </div>
         </div>
         <WarningMessage
