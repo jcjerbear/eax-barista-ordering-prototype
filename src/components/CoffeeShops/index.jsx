@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import { Button, Modal, Dropdown, Container, Row, Col } from "react-bootstrap";
 import classnames from "classnames";
 import CoffeeShopsComponent from "./CoffeeShopsComponent";
 import WarningMessage from "../WarningMessage";
@@ -12,7 +13,8 @@ export default class CoffeeShops extends Component {
     this.state = {
       coffeeShopsTextAssets: [{ id: 0, coffeeshop_name: "" }],
       WarningMessageOpen: false,
-      WarningMessageText: ""
+      WarningMessageText: "",
+      modalShow: false
     };
 
     this.handleWarningClose = this.handleWarningClose.bind(this);
@@ -47,13 +49,87 @@ export default class CoffeeShops extends Component {
     const {
       coffeeShopsTextAssets,
       WarningMessageOpen,
-      WarningMessageText
+      WarningMessageText,
+      modalShow
     } = this.state;
+
     return (
       <main id="mainContent">
         <div className={classnames("text-center", styles.header)}>
           <h1>Coffee Shops</h1>
-          {/* <p>Which coffee shop would you like to order from today?</p> */}
+
+          <Button
+            variant="primary"
+            onClick={() => this.setState({ modalShow: true })}
+          >
+            I am a barista!
+          </Button>
+
+          {/* wrap this in a file and import */}
+          <Modal
+            {...this.props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            show={modalShow}
+            onHide={() => this.setState({ modalShow: false })}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Hi barista!
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Container>
+                <Row className="show-grid">
+                  <Col xs={12} md={6}>
+                    <h4>Which coffeee shop do you work at?</h4>
+                    <Dropdown>
+                      <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Dropdown Button
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">
+                          Another action
+                        </Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">
+                          Something else
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <h4>Didn't find your coffee shop? Register now!</h4>
+                    <form
+                      onSubmit={this.handleSubmit}
+                      className="input-group my-1"
+                    >
+                      <input
+                        type="text"
+                        onChange={this.handleChange}
+                        value={this.state.textField}
+                        name="textField"
+                        className="form-control"
+                        placeholder="Enter coffee shop name here..."
+                        aria-label="Enter coffee shop name here..."
+                      />
+                      <button type="submit" className="btn btn-primary ml-2">
+                        Register
+                      </button>
+                    </form>
+                  </Col>
+                </Row>
+              </Container>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={() => this.setState({ modalShow: false })}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
           {/* <a
             href="https://www.starbucks.com/"
             className="btn btn-primary my-2"
