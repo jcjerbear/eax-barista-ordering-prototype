@@ -86,17 +86,15 @@ export default class CoffeeShops extends Component {
                     <h4>Which coffeee shop do you work at?</h4>
                     <Dropdown>
                       <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Dropdown Button
+                        Coffee Shops
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">
-                          Another action
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">
-                          Something else
-                        </Dropdown.Item>
+                        {coffeeShopsTextAssets.map(textAsset => (
+                          <Dropdown.Item key={textAsset.id} href="/order">
+                            {textAsset.coffeeshop_name}
+                          </Dropdown.Item>
+                        ))}
                       </Dropdown.Menu>
                     </Dropdown>
                   </Col>
