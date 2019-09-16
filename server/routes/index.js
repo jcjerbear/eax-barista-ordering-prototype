@@ -5,16 +5,57 @@ const sampleData = require("../sampleData");
 const router = express.Router();
 
 const createRouter = db => {
-  // MasterDetail Page Endpoint
-  router.get(CONSTANTS.ENDPOINT.MASTERDETAIL, (req, res) => {
+  /**
+   * COFFEESHOPS ENDPOINTS
+   */
+
+  // COFFEESHOPS GET Endpoint
+  router.get(CONSTANTS.ENDPOINT.COFFEESHOPS, (req, res) => {
+    let sql = `SELECT * from coffeeshop`;
+
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        throw err;
+      }
+      rows.forEach(row => {
+        console.log(row.coffeeshop_name);
+      });
+      return res.json(rows);
+    });
+  });
+
+  // COFFEESHOPS POST Endpoint
+  router.post(CONSTANTS.ENDPOINT.COFFEESHOPS, function(req, res) {
+    let sql = `INSERT INTO coffeeshop(coffeeshop_name) VALUES(?)`;
+    db.run(sql, [req.body.coffeeshop_name], function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      // get the last insert id
+      console.log(`A row has been inserted with rowid ${this.lastID}`);
+      return res.json({ ok: true });
+    });
+  });
+
+  /**
+   * DRINKS ENDPOINTS
+   */
+
+  // DRINKS GET Endpoint
+  router.get(CONSTANTS.ENDPOINT.GRID, (req, res) => {
     res.json(sampleData.textAssets);
   });
 
-  // LIST ENDPOINTS
+  /**
+   * ORDER ENDPOINTS
+   */
+
+  // ORDER GET Endpoint
   router.get(CONSTANTS.ENDPOINT.LIST, function(req, res) {
     res.json(sampleData.listTextAssets);
   });
 
+  // ORDER POST Endpoint
   router.post(CONSTANTS.ENDPOINT.LIST, function(req, res) {
     let listItem = {
       text: req.body.text,
@@ -25,6 +66,7 @@ const createRouter = db => {
     sampleData.listID++;
   });
 
+  // ORDER DELETE Endpoint
   router.delete(CONSTANTS.ENDPOINT.LIST + "/:_id", function(req, res) {
     const { _id } = req.params;
     var index = sampleData.listTextAssets.findIndex(
@@ -38,24 +80,13 @@ const createRouter = db => {
     }
   });
 
-  // Grid Page Endpoint
-  router.get(CONSTANTS.ENDPOINT.GRID, (req, res) => {
+  /**
+   * MASTERDETAIL ENDPOINTS
+   */
+
+  // MASTERDETAIL DELETE Endpoint
+  router.get(CONSTANTS.ENDPOINT.MASTERDETAIL, (req, res) => {
     res.json(sampleData.textAssets);
-  });
-
-  // COFFEESHOPS Page Endpoint
-  router.get(CONSTANTS.ENDPOINT.COFFEESHOPS, (req, res) => {
-    let sql = `SELECT * from coffeeshop`;
-
-    db.all(sql, [], (err, rows) => {
-      if (err) {
-        throw err;
-      }
-      rows.forEach(row => {
-        console.log(row.coffeeshop_name);
-      });
-      return res.json(rows);
-    });
   });
 
   return router;

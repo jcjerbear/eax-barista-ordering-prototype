@@ -2,6 +2,11 @@
 
 CONSTANTS.ERROR_MESSAGE = {};
 
+CONSTANTS.ERROR_MESSAGE.COFFEESHOPS_EMPTY_MESSAGE =
+  "Please enter a valid coffee shop name";
+CONSTANTS.ERROR_MESSAGE.COFFEESHOPS_ADD =
+  "Request to register coffee shop failed:";
+
 CONSTANTS.ERROR_MESSAGE.GRID_GET = "Request to get grid text failed:";
 
 CONSTANTS.ERROR_MESSAGE.LIST_DELETE = "Request to delete list item failed:";

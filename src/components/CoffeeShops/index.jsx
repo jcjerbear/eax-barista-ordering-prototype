@@ -2,6 +2,7 @@
 import { Button, Modal, Dropdown, Container, Row, Col } from "react-bootstrap";
 import classnames from "classnames";
 import CoffeeShopsComponent from "./CoffeeShopsComponent";
+import RegisterForm from "./RegisterForm";
 import WarningMessage from "../WarningMessage";
 import GreyBox from "../../images/GreyBox.svg";
 import styles from "./coffeeshops.module.css";
@@ -18,10 +19,18 @@ export default class CoffeeShops extends Component {
     };
 
     this.handleWarningClose = this.handleWarningClose.bind(this);
+    this.fetchCoffeeShops = this.fetchCoffeeShops.bind(this);
+    this.handleCoffeeShopRegistration = this.handleCoffeeShopRegistration.bind(
+      this
+    );
   }
 
   // Get the text sample data from the back end
   componentDidMount() {
+    this.fetchCoffeeShops();
+  }
+
+  fetchCoffeeShops() {
     fetch(CONSTANTS.ENDPOINT.COFFEESHOPS)
       .then(response => {
         if (!response.ok) {
@@ -33,7 +42,7 @@ export default class CoffeeShops extends Component {
       .catch(error =>
         this.setState({
           WarningMessageOpen: true,
-          WarningMessageText: `Request to get grid text failed: ${error}`
+          WarningMessageText: `Request to get register coffee shops failed: ${error}`
         })
       );
   }
@@ -43,6 +52,38 @@ export default class CoffeeShops extends Component {
       WarningMessageOpen: false,
       WarningMessageText: ""
     });
+  }
+
+  handleCoffeeShopRegistration(coffeeshop_name) {
+    // Warning Pop Up if the user submits an empty message
+    if (!coffeeshop_name) {
+      this.setState({
+        WarningMessageOpen: true,
+        WarningMessageText: CONSTANTS.ERROR_MESSAGE.COFFEESHOPS_EMPTY_MESSAGE
+      });
+      return;
+    }
+
+    fetch(CONSTANTS.ENDPOINT.COFFEESHOPS, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        coffeeshop_name
+      })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        this.setState({ modalShow: false });
+        this.fetchCoffeeShops();
+      })
+      .catch(error =>
+        this.setState({
+          WarningMessageOpen: true,
+          WarningMessageText: `${CONSTANTS.ERROR_MESSAGE.COFFEESHOPS_ADD} ${error}`
+        })
+      );
   }
 
   render() {
@@ -100,23 +141,11 @@ export default class CoffeeShops extends Component {
                   </Col>
                   <Col xs={12} md={6}>
                     <h4>Didn't find your coffee shop? Register now!</h4>
-                    <form
-                      onSubmit={this.handleSubmit}
-                      className="input-group my-1"
-                    >
-                      <input
-                        type="text"
-                        onChange={this.handleChange}
-                        value={this.state.textField}
-                        name="textField"
-                        className="form-control"
-                        placeholder="Enter coffee shop name here..."
-                        aria-label="Enter coffee shop name here..."
-                      />
-                      <button type="submit" className="btn btn-primary ml-2">
-                        Register
-                      </button>
-                    </form>
+                    <RegisterForm
+                      onCoffeeShopRegistration={
+                        this.handleCoffeeShopRegistration
+                      }
+                    />
                   </Col>
                 </Row>
               </Container>
@@ -144,7 +173,7 @@ export default class CoffeeShops extends Component {
           <div className="row justify-content-around text-center pb-5">
             {coffeeShopsTextAssets.map(textAssets => (
               <CoffeeShopsComponent
-                id={textAssets.id}
+                key={textAssets.id}
                 coffeeshop_name={textAssets.coffeeshop_name}
                 // description={textAssets.shortDescription}
                 image={GreyBox}

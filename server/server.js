@@ -17,7 +17,7 @@ let db = new sqlite3.Database("./barista.db", err => {
   if (err) {
     return console.error(err.message);
   }
-  console.log("Connected to barista SQlite database.");
+  console.log("Connected to barista SQLite database.");
 });
 
 /**
