@@ -4,7 +4,7 @@ import OrderForm from "./OrderForm";
 import WarningMessage from "../WarningMessage";
 import CONSTANTS from "../../constants";
 
-export default class List extends Component {
+export default class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,11 +101,7 @@ export default class List extends Component {
   }
 
   render() {
-    const {
-      list,
-      WarningMessageOpen,
-      WarningMessageText
-    } = this.state;
+    const { list, WarningMessageOpen, WarningMessageText } = this.state;
     return (
       <main id="mainContent" className="container">
         <div className="row">
@@ -113,9 +109,7 @@ export default class List extends Component {
             <h3>Starbuck's Customer Order List</h3>
           </div>
           <div className="col-12 p-0">
-            <OrderForm
-              onAddListItem={this.handleAddListItem}
-            />
+            <OrderForm onAddListItem={this.handleAddListItem} />
           </div>
           {list.map(listItem => (
             <OrderItem
