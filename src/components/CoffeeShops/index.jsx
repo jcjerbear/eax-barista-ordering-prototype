@@ -108,7 +108,6 @@ export default class CoffeeShops extends Component {
 
           {/* wrap this in a file and import */}
           <Modal
-            {...this.props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
