@@ -1,21 +1,25 @@
 ﻿import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import OrderForm from "./OrderForm";
 import WarningMessage from "../WarningMessage";
 import CONSTANTS from "../../constants";
 
-export default class Order extends Component {
+class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      coffeeShopsTextAssets: [{ coffeeshop_name: "" }],
       list: [],
       WarningMessageOpen: false,
-      WarningMessageText: ""
+      WarningMessageText: "",
+      coffeeshop_id: this.props.match.params.coffeeshop_id
     };
 
     this.handleWarningClose = this.handleWarningClose.bind(this);
     this.handleDeleteListItem = this.handleDeleteListItem.bind(this);
     this.handleAddListItem = this.handleAddListItem.bind(this);
+    this.fetchCoffeeShopNameWithId = this.fetchCoffeeShopNameWithId.bind(this);
   }
 
   // Get the sample data from the back end
@@ -34,6 +38,7 @@ export default class Order extends Component {
           WarningMessageText: `${CONSTANTS.ERROR_MESSAGE.LIST_GET} ${error}`
         })
       );
+    this.fetchCoffeeShopNameWithId();
   }
 
   handleDeleteListItem(listItem) {
@@ -100,13 +105,35 @@ export default class Order extends Component {
     });
   }
 
+  fetchCoffeeShopNameWithId() {
+    fetch(CONSTANTS.ENDPOINT.COFFEESHOPS + `/${this.state.coffeeshop_id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(result => {
+        this.setState({ coffeeShopsTextAssets: result });
+      })
+      .catch(error =>
+        this.setState({
+          WarningMessageOpen: true,
+          WarningMessageText: `Request to get grid text failed: ${error}`
+        })
+      );
+  }
+
   render() {
     const { list, WarningMessageOpen, WarningMessageText } = this.state;
     return (
       <main id="mainContent" className="container">
         <div className="row">
           <div className="col mt-5 p-0">
-            <h3>Starbuck's Customer Order List</h3>
+            <h3>
+              {this.state.coffeeShopsTextAssets[0].coffeeshop_name}'s Customer
+              Order List
+            </h3>
           </div>
           <div className="col-12 p-0">
             <OrderForm onAddListItem={this.handleAddListItem} />
@@ -128,3 +155,5 @@ export default class Order extends Component {
     );
   }
 }
+
+export default withRouter(Order);

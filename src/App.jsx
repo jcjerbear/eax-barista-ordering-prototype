@@ -20,7 +20,7 @@ class App extends Component {
           <Route path="/thankyou" component={ThankYou} />
           <Route path="/coffeeshops/:coffeeshop_id" component={Drinks} />
           <Route path="/coffeeshops" component={CoffeeShops} />
-          <Route path="/:id/order" component={Order} />
+          <Route path="/:coffeeshop_id/order" component={Order} />
           <Route path="/masterdetail" component={Master_Detail} />
         </Switch>
         <Footer />
