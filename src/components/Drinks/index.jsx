@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import classnames from "classnames";
 import DrinksComponent from "./DrinksComponent";
 import EstimatedTimeForm from "./EstimatedTimeForm";
@@ -7,16 +8,19 @@ import GreyBox from "../../images/GreyBox.svg";
 import styles from "./drinks.module.css";
 import CONSTANTS from "../../constants";
 
-export default class Drinks extends Component {
+class Drinks extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      coffeeShopsTextAssets: [{ coffeeshop_name: "" }],
       drinksTextAssets: [{ description: "", header: "", id: 0 }],
       WarningMessageOpen: false,
-      WarningMessageText: ""
+      WarningMessageText: "",
+      coffeeshop_id: this.props.match.params.coffeeshop_id
     };
 
     this.handleWarningClose = this.handleWarningClose.bind(this);
+    this.fetchCoffeeShopNameWithId = this.fetchCoffeeShopNameWithId.bind(this);
   }
 
   // Get the text sample data from the back end
@@ -35,6 +39,7 @@ export default class Drinks extends Component {
           WarningMessageText: `Request to get grid text failed: ${error}`
         })
       );
+    this.fetchCoffeeShopNameWithId();
   }
 
   handleWarningClose() {
@@ -42,6 +47,25 @@ export default class Drinks extends Component {
       WarningMessageOpen: false,
       WarningMessageText: ""
     });
+  }
+
+  fetchCoffeeShopNameWithId() {
+    fetch(CONSTANTS.ENDPOINT.COFFEESHOPS + `/${this.state.coffeeshop_id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(result => {
+        this.setState({ coffeeShopsTextAssets: result });
+      })
+      .catch(error =>
+        this.setState({
+          WarningMessageOpen: true,
+          WarningMessageText: `Request to get grid text failed: ${error}`
+        })
+      );
   }
 
   render() {
@@ -53,7 +77,7 @@ export default class Drinks extends Component {
     return (
       <main id="mainContent">
         <div className={classnames("text-center", styles.header)}>
-          <h1>Drinks</h1>
+          <h1>{this.state.coffeeShopsTextAssets[0].coffeeshop_name}</h1>
           <p>
             To inspire and nurture the human spirit – one person, one cup and
             one neighborhood at a time.
@@ -94,3 +118,5 @@ export default class Drinks extends Component {
     );
   }
 }
+
+export default withRouter(Drinks);
