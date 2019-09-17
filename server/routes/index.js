@@ -62,15 +62,15 @@ const createRouter = db => {
   });
 
   /**
-   * ORDER ENDPOINTS
+   * LIST ENDPOINTS
    */
 
-  // ORDER GET Endpoint
+  // LIST GET Endpoint
   router.get(CONSTANTS.ENDPOINT.LIST, function(req, res) {
     res.json(sampleData.listTextAssets);
   });
 
-  // ORDER POST Endpoint
+  // LIST POST Endpoint
   router.post(CONSTANTS.ENDPOINT.LIST, function(req, res) {
     let listItem = {
       text: req.body.text,
@@ -81,7 +81,7 @@ const createRouter = db => {
     sampleData.listID++;
   });
 
-  // ORDER DELETE Endpoint
+  // LIST DELETE Endpoint
   router.delete(CONSTANTS.ENDPOINT.LIST + "/:_id", function(req, res) {
     const { _id } = req.params;
     var index = sampleData.listTextAssets.findIndex(
@@ -93,6 +93,37 @@ const createRouter = db => {
     } else {
       res.status(404).send("Could not find item with id:" + _id);
     }
+  });
+
+  /**
+   * ORDER ENDPOINTS
+   */
+
+  // ORDER GET Endpoint
+  router.get(CONSTANTS.ENDPOINT.ORDER, function(req, res) {
+    res.json(sampleData.listTextAssets);
+  });
+
+  // ORDER POST Endpoint
+  router.post(CONSTANTS.ENDPOINT.ORDER, function(req, res) {
+    let sql = `INSERT INTO [order] (customer, coffeeshop_id, pickup_time, drinks) VALUES(?, ?, ?, ?)`;
+    db.run(
+      sql,
+      [
+        req.body.customer,
+        req.body.coffeeshop_id,
+        req.body.pickup_time,
+        req.body.drinks
+      ],
+      function(err) {
+        if (err) {
+          return console.log(err.message);
+        }
+        // get the last insert id
+        console.log(`A row has been inserted with rowid ${this.lastID}`);
+        return res.json({ ok: true });
+      }
+    );
   });
 
   /**
