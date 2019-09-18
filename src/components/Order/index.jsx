@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import OrderItem from "./OrderItem";
-import OrderForm from "./OrderForm";
+// import OrderForm from "./OrderForm";
 import WarningMessage from "../WarningMessage";
 import CONSTANTS from "../../constants";
 
@@ -9,6 +9,9 @@ class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      orderTextAssets: [
+        { id: 0, customer: "", coffeeshop_id: 0, pickup_time: 0, drinks: "" }
+      ],
       coffeeShopsTextAssets: [{ coffeeshop_name: "" }],
       list: [],
       WarningMessageOpen: false,
@@ -20,6 +23,9 @@ class Order extends Component {
     this.handleDeleteListItem = this.handleDeleteListItem.bind(this);
     this.handleAddListItem = this.handleAddListItem.bind(this);
     this.fetchCoffeeShopNameWithId = this.fetchCoffeeShopNameWithId.bind(this);
+    this.fetchAscendinglySortedOrders = this.fetchAscendinglySortedOrders.bind(
+      this
+    );
   }
 
   // Get the sample data from the back end
@@ -39,6 +45,7 @@ class Order extends Component {
         })
       );
     this.fetchCoffeeShopNameWithId();
+    this.fetchAscendinglySortedOrders();
   }
 
   handleDeleteListItem(listItem) {
@@ -124,6 +131,27 @@ class Order extends Component {
       );
   }
 
+  fetchAscendinglySortedOrders() {
+    console.log("within fetchAscendinglySortedOrders");
+    fetch(CONSTANTS.ENDPOINT.ORDER + `/${this.state.coffeeshop_id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then(result => {
+        this.setState({ orderTextAssets: result });
+        console.log(this.state.orderTextAssets);
+      })
+      .catch(error =>
+        this.setState({
+          WarningMessageOpen: true,
+          WarningMessageText: `Request to get ascendingly sorted order failed: ${error}`
+        })
+      );
+  }
+
   render() {
     const { list, WarningMessageOpen, WarningMessageText } = this.state;
     return (
@@ -135,13 +163,13 @@ class Order extends Component {
               Order List
             </h3>
           </div>
-          <div className="col-12 p-0">
+          {/* <div className="col-12 p-0">
             <OrderForm onAddListItem={this.handleAddListItem} />
-          </div>
-          {list.map(listItem => (
+          </div> */}
+          {this.state.orderTextAssets.map(textAsset => (
             <OrderItem
-              key={listItem._id}
-              listItem={listItem}
+              key={textAsset._id}
+              textAsset={textAsset}
               onDeleteListItem={this.handleDeleteListItem}
             />
           ))}
