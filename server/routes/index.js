@@ -100,8 +100,19 @@ const createRouter = db => {
    */
 
   // ORDER GET Endpoint
-  router.get(CONSTANTS.ENDPOINT.ORDER, function(req, res) {
-    res.json(sampleData.listTextAssets);
+  router.get(CONSTANTS.ENDPOINT.ORDER + `/:id`, function(req, res) {
+    let id = req.params.id;
+    let sql = `SELECT * FROM [order] WHERE coffeeshop_id = ? ORDER BY pickup_time ASC`;
+
+    db.all(sql, [id], (err, rows) => {
+      if (err) {
+        throw err;
+      }
+      rows.forEach(row => {
+        console.log(row.pickup_time);
+      });
+      return res.json(rows);
+    });
   });
 
   // ORDER POST Endpoint
