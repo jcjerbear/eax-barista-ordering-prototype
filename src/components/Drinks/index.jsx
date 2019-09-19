@@ -89,8 +89,6 @@ class Drinks extends Component {
       return;
     }
 
-    console.log(state.startDate);
-
     fetch(CONSTANTS.ENDPOINT.ORDER, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -105,7 +103,6 @@ class Drinks extends Component {
         if (!response.ok) {
           throw Error(response.statusText);
         }
-        console.log("response ok");
         this.setState({ modalShow: false });
         this.props.history.push("/thankyou");
       })
@@ -132,21 +129,12 @@ class Drinks extends Component {
             To inspire and nurture the human spirit – one person, one cup and
             one neighborhood at a time.
           </p>
-          {/* <a
-            href="https://www.starbucks.com/"
-            className="btn btn-primary my-2"
-          >
-            Link to starbucks.com
-          </a> */}
         </div>
 
         <div className="container">
           <div className="row justify-content-center py-5">
             <h1>What would you like to drink today?</h1>
           </div>
-          {/* <div className="row justify-content-center py-5">
-            <EstimatedTimeForm onAddListItem={this.handleAddListItem} />
-          </div> */}
           <div className="row justify-content-around text-center pb-5">
             {drinksTextAssets.map(textAssets => (
               <DrinksComponent
@@ -167,7 +155,6 @@ class Drinks extends Component {
             </Button>
           </div>
 
-          {/* wrap this in a file and import */}
           <Modal
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
@@ -175,29 +162,11 @@ class Drinks extends Component {
             show={modalShow}
             onHide={() => this.setState({ modalShow: false })}
           >
-            {/* <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                Please enter the following info to place an order!
-              </Modal.Title>
-            </Modal.Header> */}
             <Modal.Body>
               <Container>
-                {/* <h4>What is your full name?</h4>
-                <RegisterForm
-                  onCoffeeShopRegistration={this.handleCoffeeShopRegistration}
-                />
-                <h4>Didn't find your coffee shop? Register now!</h4>
-                <RegisterForm
-                  onCoffeeShopRegistration={this.handleCoffeeShopRegistration}
-                /> */}
                 <PlaceOrderForm onOrderSubmit={this.handleOrderSubmit} />
               </Container>
             </Modal.Body>
-            {/* <Modal.Footer>
-              <Button onClick={() => this.setState({ modalShow: false })}>
-                Submit Order
-              </Button>
-            </Modal.Footer> */}
           </Modal>
         </div>
         <WarningMessage

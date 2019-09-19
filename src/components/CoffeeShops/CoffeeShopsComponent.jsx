@@ -9,7 +9,6 @@ export default function CoffeeShopsComponent(props) {
       <h3>
         <Link to={`/coffeeshops/${id}`}>{coffeeshop_name}</Link>
       </h3>
-      {/* <p>{description}</p> */}
     </div>
   );
 }
