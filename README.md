@@ -1,4 +1,21 @@
-﻿## Getting Started
+﻿# EAX Barista
+
+<p>
+  <a href="https://github.com/facebook/react">
+    <img src="https://img.shields.io/badge/react-16.8.4-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://github.com/twbs/bootstrap">
+    <img src="https://img.shields.io/badge/bootstrap-4.3.1-brightgreen.svg" alt="element-ui">
+  </a>
+  <a href="http://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs Welcome">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
+  </a>
+</p>
+
+## Getting Started
 
 ### Develop locally on your machine
 
@@ -49,3 +66,7 @@ The front-end is served on http://localhost:3000/ and the back-end on http://loc
 - Express - https://expressjs.com/
 
   This project was created using [Microsoft Web Template Studio](https://github.com/Microsoft/WebTemplateStudio).
+
+## License
+
+EAX Barista is [MIT licensed](./LICENSE).
