@@ -1,7 +1,6 @@
 ﻿import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import OrderItem from "./OrderItem";
-// import OrderForm from "./OrderForm";
 import WarningMessage from "../WarningMessage";
 import CONSTANTS from "../../constants";
 
@@ -132,7 +131,6 @@ class Order extends Component {
   }
 
   fetchAscendinglySortedOrders() {
-    console.log("within fetchAscendinglySortedOrders");
     fetch(CONSTANTS.ENDPOINT.ORDER + `/${this.state.coffeeshop_id}`)
       .then(response => {
         if (!response.ok) {
@@ -142,7 +140,6 @@ class Order extends Component {
       })
       .then(result => {
         this.setState({ orderTextAssets: result });
-        console.log(this.state.orderTextAssets);
       })
       .catch(error =>
         this.setState({
@@ -153,7 +150,7 @@ class Order extends Component {
   }
 
   render() {
-    const { list, WarningMessageOpen, WarningMessageText } = this.state;
+    const { WarningMessageOpen, WarningMessageText } = this.state;
     return (
       <main id="mainContent" className="container">
         <div className="row">
@@ -163,15 +160,8 @@ class Order extends Component {
               Order List
             </h3>
           </div>
-          {/* <div className="col-12 p-0">
-            <OrderForm onAddListItem={this.handleAddListItem} />
-          </div> */}
           {this.state.orderTextAssets.map(textAsset => (
-            <OrderItem
-              key={textAsset._id}
-              textAsset={textAsset}
-              onDeleteListItem={this.handleDeleteListItem}
-            />
+            <OrderItem key={textAsset._id} textAsset={textAsset} />
           ))}
           <WarningMessage
             open={WarningMessageOpen}

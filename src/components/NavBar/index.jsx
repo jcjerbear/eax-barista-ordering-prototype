@@ -18,15 +18,6 @@ export default function NavBar() {
           <Link className="nav-item nav-link active" to="/coffeeshops">
             Coffee Shops
           </Link>
-          {/* <Link className="nav-item nav-link active" to="Grid">
-            Drinks
-          </Link>
-          <Link className="nav-item nav-link active" to="List">
-            Orders
-          </Link>
-          <Link className="nav-item nav-link active" to="Master_Detail">
-            Details
-          </Link> */}
         </div>
       </nav>
     </React.Fragment>

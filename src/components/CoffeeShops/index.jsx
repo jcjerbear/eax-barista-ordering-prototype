@@ -106,7 +106,6 @@ export default class CoffeeShops extends Component {
             I am a barista!
           </Button>
 
-          {/* wrap this in a file and import */}
           <Modal
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
@@ -158,13 +157,6 @@ export default class CoffeeShops extends Component {
               </Button>
             </Modal.Footer>
           </Modal>
-
-          {/* <a
-            href="https://www.starbucks.com/"
-            className="btn btn-primary my-2"
-          >
-            Link to starbucks.com
-          </a> */}
         </div>
 
         <div className="container">
@@ -174,13 +166,11 @@ export default class CoffeeShops extends Component {
 
           <div className="row justify-content-around text-center pb-5">
             {coffeeShopsTextAssets.map(textAssets => {
-              console.log(textAssets);
               return (
                 <CoffeeShopsComponent
                   key={textAssets.id}
                   id={textAssets.id}
                   coffeeshop_name={textAssets.coffeeshop_name}
-                  // description={textAssets.shortDescription}
                   image={GreyBox}
                 />
               );

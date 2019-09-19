@@ -9,7 +9,7 @@ const createRouter = db => {
    * COFFEESHOPS ENDPOINTS
    */
 
-  // COFFEESHOPS GET Endpoints
+  // COFFEESHOPS GET Endpoint: GET *
   router.get(CONSTANTS.ENDPOINT.COFFEESHOPS, (req, res) => {
     let sql = `SELECT * FROM coffeeshop`;
 
@@ -24,6 +24,7 @@ const createRouter = db => {
     });
   });
 
+  // COFFEESHOPS GET Endpoint: GET coffeeshop_name with id
   router.get(CONSTANTS.ENDPOINT.COFFEESHOPS + `/:id`, (req, res) => {
     let id = req.params.id;
     let sql = `SELECT coffeeshop_name FROM coffeeshop WHERE id = ?`;
